@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <style>
-  h1.display-4{
-	font-size:12vw
+@media screen and (min-width: 601px) {
+   h1.display-4{
+	font-size:50px
   }
   div.col {
-    font-size: 6.3vw;
+    font-size: 30px;
   }
+}
+@media screen and (max-width: 600px) {
+  h1.display-4{
+	font-size:8vw
+  }
+  div.col {
+    font-size: 5vw;
+  }
+ }
 </style>
 <title>Covid-sl</title></head>
 <body>
 <div class="col">
-	<h1 class="display-4"><span>Covid SL	</span><img src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/lk.png" alt="" style="width:100px" class="pb-3">
+	<h1 class="display-4"><span>Covid SL	🦁</span>
 	</h1>
 	<pre id="code">
 	<pre>
 </div>
-<pre class="pt-5 pl-3">⚡ @rapiddeath</pre>
+<hr class="ml-3 mr-3"/>
+<div class="col"><pre>⚡ @rapiddeath</div>
 <script type ="text/javascript" async>
 fetch('https://corona.lmao.ninja/countries/Sri%20Lanka')
   .then((response) => {
@@ -27,8 +39,24 @@ fetch('https://corona.lmao.ninja/countries/Sri%20Lanka')
   .then((data) => {
 	var preTag = document.getElementById("code");
 	delete data.countryInfo;
-	console.log(data)
-	preTag.innerHTML = JSON.stringify(data,null, 2);
+	var date = new Date(data.updated)
+	data.country = data.country + " 🇱🇰"
+	data.critical = data.critical + " 🤢"
+	data.recovered = data.recovered + " 💪"
+	data.deaths = data.deaths + " ⚰️"
+	data.todayDeaths = data.todayDeaths + " 💀"
+	data.todayCases = data.todayCases + " 🗓️";
+	data.cases = data.cases + " 🔺";
+	data.active = data.active + " 😷";
+	data.updated = date.toLocaleDateString() +" "+ date.toLocaleTimeString() + " ⏱️";
+	data.casesPerOneMillion = data.casesPerOneMillion + " 📟";
+	data.deathsPerOneMillion = data.deathsPerOneMillion + " 🔢";
+
+	var content = Object.keys(data).map(function(key){
+		var value = key + ": " + data[key]
+		return "<span>"+ value+"</span></br>"
+		})
+	preTag.innerHTML = content.join('');
   });
 </script> 
 </body>

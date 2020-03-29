@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Covid-sl</title></head>
+<body>
+<script type ="text/javascript" async>
+<h1>Covid SL</h1>
+fetch('https://corona.lmao.ninja/countries/Sri%20Lanka')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+	var preTag = document.createElement('pre');
+    preTag.innerHTML = JSON.stringify(data,null, 2);
+	document.body.appendChild(preTag);  
+  });
+</script> 
+</body>
+</html>

@@ -17,10 +17,10 @@ fetch('https://corona.lmao.ninja/countries/Sri%20Lanka')
     return response.json();
   })
   .then((data) => {
-	var preTag = document.getElementById("code");//document.createElement('pre');
-    preTag.innerHTML = JSON.stringify(data,null, 2);
-	document.getElementsByClassName("img-thumbnail")[0].src = data.countryInfo.flag;
-	//document.body.appendChild(preTag);  
+	var preTag = document.getElementById("code");
+	delete data.countryInfo;
+	console.log(data)
+	preTag.innerHTML = JSON.stringify(data,null, 2);
   });
 </script> 
 </body>

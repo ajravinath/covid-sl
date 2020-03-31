@@ -1,63 +1,44 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<style>
-@media screen and (min-width: 601px) {
-   h1.display-4{
-	font-size:50px
-  }
-  div.col {
-    font-size: 30px;
-  }
-}
-@media screen and (max-width: 600px) {
-  h1.display-4{
-	font-size:8vw
-  }
-  div.col {
-    font-size: 5vw;
-  }
- }
-</style>
-<title>Covid-sl</title></head>
-<body>
-<div class="col">
-	<h1 class="display-4"><span>Covid SL	🦁</span>
-	</h1>
-	<pre id="code">
-	<pre>
-</div>
-<hr class="ml-3 mr-3"/>
-<div class="col"><pre>⚡ @rapiddeath</div>
-<script type ="text/javascript" async>
-fetch('https://corona.lmao.ninja/countries/Sri%20Lanka')
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-	var preTag = document.getElementById("code");
-	delete data.countryInfo;
-	var date = new Date(data.updated)
-	data.country = data.country + " 🇱🇰"
-	data.critical = data.critical + " 🤢"
-	data.recovered = data.recovered + " 💪"
-	data.deaths = data.deaths + " ⚰️"
-	data.todayDeaths = data.todayDeaths + " 💀"
-	data.todayCases = data.todayCases + " 🗓️";
-	data.cases = data.cases + " 🔺";
-	data.active = data.active + " 😷";
-	data.updated = date.toLocaleDateString() +" "+ date.toLocaleTimeString() + " ⏱️";
-	data.casesPerOneMillion = data.casesPerOneMillion + " 📟";
-	data.deathsPerOneMillion = data.deathsPerOneMillion + " 🔢";
+<html lang="en">
 
-	var content = Object.keys(data).map(function(key){
-		var value = key + ": " + data[key]
-		return "<span>"+ value+"</span></br>"
-		})
-	preTag.innerHTML = content.join('');
-  });
-</script> 
+<head>
+    <meta charset="UTF-8">
+    <title>Covid Info Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <div class="sectiontitle">
+            <h1 class="display-4"><span id="pageTitle"></span>
+            </h1>
+        <span class="headerLine"></span><br>
+        <span><img id="countryFlag"/></span>
+    </div>
+    <div>
+        <select id="locality-dropdown" name="locality"></select>
+    </div>
+    <div id="projectFacts" class="sectionClass">
+        <div class="fullWidth eight columns">
+            <div class="projectFactsWrap " id="code">
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div>&copy; 2020 | Sri Lanka </div><br>
+        <div>Contributors</div>
+        <div>⚡ @rapiddeath | ⚡ @vlgunarathne</div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
+
 </body>
+
 </html>

@@ -6,6 +6,8 @@ body {
   position: relative;
   -webkit-font-smoothing: antialiased;
   margin: 0;
+  background-color: antiquewhite;
+
 }
 
 * {
@@ -17,6 +19,7 @@ body {
 #countryFlag {
   margin: 10px;
   border: 1px solid #101F2E;
+
 }
 
 .selectize-input {

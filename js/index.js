@@ -108,4 +108,32 @@ $("#locality-dropdown").change(function () {
 
 getCovidDataForCountry("LK");
 
+window.onload = function () {
+    var end = this.value;
+    var firstDropVal = $('#locality-dropdown').val();
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+        title:{
+            text: "Chart"
+        },
+        data: [
+            {
+                type: "column",
+                dataPoints: [
+                    { label: "Cases",  y: 160 },
+                    { label: "Deaths", y: 15  },
+                    { label: "Today Cases", y: 25  },
+                    { label: "Today Deaths",  y: 30  },
+                    { label: "Recovered",  y: 28  }
+                ]
+            }
+        ]
+    });
+    chart.render();
+}
+
+
+
+
+
 

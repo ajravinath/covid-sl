@@ -48,6 +48,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockqu
   padding: 20px 0px 50px 0px;
   position: relative;
   display: block;
+    padding-left: 100px;
 }
 
 .fullWidth {
@@ -221,7 +222,11 @@ footer p strong {
   position: absolute;
 }
 
-
+.chart{
+   height: 500px;
+    width: 1000px;
+    padding-left: 250px;
+}
 
 
 

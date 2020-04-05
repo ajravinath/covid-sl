@@ -125,7 +125,7 @@ window.onload = function () {
             theme: "light2",
             align: "center",
             title:{
-                text: "Chart: Sri Lanka"
+                text: "Covid-19 in Sri Lanka"
             },
             data: [
                 {

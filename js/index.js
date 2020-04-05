@@ -109,27 +109,41 @@ $("#locality-dropdown").change(function () {
 getCovidDataForCountry("LK");
 
 window.onload = function () {
-    var end = this.value;
-    var firstDropVal = $('#locality-dropdown').val();
+    fetch('https://corona.lmao.ninja/countries/' + 'sri%20lanka')
+        .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        var preTag = document.getElementById("code");
+        var deaths = data.deaths;
+        var cases = data.cases;
+        var todayCases = data.todayCases;
+        var todayDeaths = data.todayDeaths;
+        var recovred = data.recovered;
+        var active = data.active;
+        var chart = new CanvasJS.Chart("chartContainer", {
+            theme: "light2",
+            align: "center",
+            title:{
+                text: "Chart: Sri Lanka"
+            },
+            data: [
+                {
+                    type: "column",
+                    dataPoints: [
+                        { label: "Cases",  y: cases },
+                        { label: "Active",  y: active },
+                        { label: "Deaths", y: deaths  },
+                        { label: "Recovered",  y: recovred  },
+                        { label: "Today Cases", y: todayCases  },
+                        { label: "Today Deaths",  y: todayDeaths  }
+                    ]
+                }
+            ]
+        });
+        chart.render();
+        });
 
-    var chart = new CanvasJS.Chart("chartContainer", {
-        title:{
-            text: "Chart"
-        },
-        data: [
-            {
-                type: "column",
-                dataPoints: [
-                    { label: "Cases",  y: 160 },
-                    { label: "Deaths", y: 15  },
-                    { label: "Today Cases", y: 25  },
-                    { label: "Today Deaths",  y: 30  },
-                    { label: "Recovered",  y: 28  }
-                ]
-            }
-        ]
-    });
-    chart.render();
 }
 
 

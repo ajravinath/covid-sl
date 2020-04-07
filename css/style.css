@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+
 body {
-  font-family: Open Sans, "Helvetica Neue", "Helvetica", Helvetica, Arial,   sans-serif;
+  font-family: Open Sans, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-size: 13px;
   color: #666;
   position: relative;
@@ -24,6 +25,7 @@ body {
 
 .selectize-input {
   width: 20%;
+  min-width: 250px;
   text-align: center;
   font-weight: bold;
 }
@@ -37,11 +39,30 @@ footer {
   text-align: center;
 }
 
-.footerText{
+.footerText {
   font-size: 14px;
 }
 
-body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+p,
+blockquote,
+th,
+td {
   margin: 0;
   padding: 0;
   font-size: 20px;
@@ -52,7 +73,6 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockqu
   padding: 20px 0px 50px 0px;
   position: relative;
   display: block;
-    padding-left: 100px;
 }
 
 .fullWidth {
@@ -90,20 +110,20 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockqu
 }
 
 
-.projectFactsWrap{
-    display: flex;
+.projectFactsWrap {
+  display: flex;
   margin-top: 30px;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
 
-#projectFacts .fullWidth{
+#projectFacts .fullWidth {
   padding-left: 7%;
   padding-right: 7%;
 }
 
-.projectFactsWrap .item{
+.projectFactsWrap .item {
   width: 350px;
   height: 100%;
   padding: 50px 0px;
@@ -114,13 +134,13 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockqu
 }
 
 
-.projectFactsWrap .item p.number{
+.projectFactsWrap .item p.number {
   font-size: 40px;
   padding: 0;
   font-weight: bold;
 }
 
-.projectFactsWrap .item p{
+.projectFactsWrap .item p {
   color: rgba(255, 255, 255, 0.8);
   font-size: 18px;
   margin: 0;
@@ -129,7 +149,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockqu
 }
 
 
-.projectFactsWrap .item span{
+.projectFactsWrap .item span {
   width: 60px;
   background: rgba(255, 255, 255, 0.8);
   height: 2px;
@@ -138,31 +158,28 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockqu
 }
 
 
-.projectFactsWrap .item i{
+.projectFactsWrap .item i {
   vertical-align: middle;
   font-size: 50px;
   color: rgba(255, 255, 255, 0.8);
 }
 
 
-.projectFactsWrap .item:hover i, .projectFactsWrap .item:hover p{
+.projectFactsWrap .item:hover i,
+.projectFactsWrap .item:hover p {
   color: white;
 }
 
-.projectFactsWrap .item:hover span{
+.projectFactsWrap .item:hover span {
   background: white;
 }
 
-@media (max-width: 786px){
-  .projectFactsWrap .item {
-     flex: 0 0 50%;
-  }
-}
+
 
 /* AUTHOR LINK */
 
 
-footer{
+footer {
   z-index: 100;
   padding-top: 50px;
   padding-bottom: 50px;
@@ -172,12 +189,12 @@ footer{
 }
 
 footer p {
-color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 16px;
   opacity: 0;
   font-family: 'Open Sans';
   width: 100%;
-    word-wrap: break-word;
+  word-wrap: break-word;
   line-height: 25px;
   -webkit-transform: translateX(-200px);
   transform: translateX(-200px);
@@ -187,13 +204,13 @@ color: rgba(255, 255, 255, 0.8);
   transition: all 250ms ease;
 }
 
-footer .authorWindow a{
+footer .authorWindow a {
   color: white;
   text-decoration: none;
 }
 
 footer p strong {
-    color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .about-me-img {
@@ -206,11 +223,10 @@ footer p strong {
 }
 
 
-.about-me-img img {
-}
+.about-me-img img {}
 
 
-.authorWindow{
+.authorWindow {
   width: 600px;
   background: #75439a;
   padding: 22px 20px 22px 20px;
@@ -218,7 +234,7 @@ footer p strong {
   overflow: hidden;
 }
 
-.authorWindowWrapper{
+.authorWindowWrapper {
   display: none;
   left: 110px;
   top: 0;
@@ -226,15 +242,14 @@ footer p strong {
   position: absolute;
 }
 
-.chart{
-   height: 500px;
-    width: 1000px;
-    padding-left: 250px;
+.chart {
+  height: 500px;
+  width: 100%;
 }
 
 
 
-.trans{
+.trans {
   opacity: 1;
   -webkit-transform: translateX(0px);
   transform: translateX(0px);
@@ -244,19 +259,16 @@ footer p strong {
 }
 
 @media screen and (max-width: 768px) {
-    .authorWindow{
-         width: 210px;
-    }
+  .authorWindow {
+    width: 210px;
+  }
 
-    .authorWindowWrapper{
-             bottom: -170px;
-  margin-bottom: 20px;
-    }
+  .authorWindowWrapper {
+    bottom: -170px;
+    margin-bottom: 20px;
+  }
 
-    footer p{
-          font-size: 14px;
-    }
+  footer p {
+    font-size: 14px;
+  }
 }
-
-
-

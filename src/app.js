@@ -1,4 +1,12 @@
+import './scss/style.scss';
+import { NovelCovid } from 'novelcovid';
+import { version } from '../package.json';
+
+const track = new NovelCovid();
+
 $(document).ready(function () {
+  $('#version').text(`v${version}`);
+
   let dropdown = $('#locality-dropdown');
 
   dropdown.empty();
@@ -6,17 +14,14 @@ $(document).ready(function () {
   dropdown.append('<option selected="true">Sri Lanka</option>');
   dropdown.prop('selectedIndex', 0);
 
-  const url = 'https://corona.lmao.ninja/countries';
-
-  // Populate dropdown with list of Countries
-  $.getJSON(url, function (data) {
+  track.countries().then(data => {
     $.each(data, function (key, entry) {
       dropdown.append(
         $('<option></option>').attr('value', entry.iso2).text(entry.country)
       );
     });
     $('select').selectize({
-      sortField: 'text',
+      sortField: 'text'
     });
   });
 });
@@ -34,7 +39,7 @@ let propertyMap = new Map([
   ['deathsPerOneMillion', 'Deaths per 1 Million'],
   ['updated', 'Last updated time'],
   ['tests', 'Tests'],
-  ['testsPerOneMillion', 'Tests per 1 Million'],
+  ['testsPerOneMillion', 'Tests per 1 Million']
 ]);
 
 let iconMap = new Map([
@@ -48,7 +53,7 @@ let iconMap = new Map([
   ['casesPerOneMillion', '📟'],
   ['deathsPerOneMillion', '🔢'],
   ['tests', '🔬'],
-  ['testsPerOneMillion', '1️⃣'],
+  ['testsPerOneMillion', '1️⃣']
 ]);
 
 $.fn.jQuerySimpleCounter = function (options) {
@@ -58,7 +63,7 @@ $.fn.jQuerySimpleCounter = function (options) {
       end: 100,
       easing: 'swing',
       duration: 400,
-      complete: '',
+      complete: ''
     },
     options
   );
@@ -74,52 +79,47 @@ $.fn.jQuerySimpleCounter = function (options) {
         var mathCount = Math.ceil(this.count);
         thisElement.text(mathCount);
       },
-      complete: settings.complete,
+      complete: settings.complete
     }
   );
 };
 
 var getCovidDataForCountry = function (country) {
-  fetch('https://corona.lmao.ninja/countries/' + country)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      var preTag = document.getElementById('code');
-      var country = data.country;
-      var countryTitle = country ? '- ' + country : '';
-      document.getElementById('pageTitle').innerHTML =
-        'Covid 19 Statistics ' + countryTitle;
-      document.getElementById('countryFlag').src = data.countryInfo.flag;
-      var date = new Date(data.updated);
-      delete data.countryInfo;
-      delete data.country;
-      delete data.updated;
-      date =
-        date.toLocaleDateString() + ' ' + date.toLocaleTimeString() + ' ⏱️';
+  track.countries(country).then(data => {
+    var preTag = document.getElementById('code');
+    var country = data.country;
+    var countryTitle = country ? '- ' + country : '';
+    document.getElementById('pageTitle').innerHTML =
+      'Covid 19 Statistics ' + countryTitle;
+    document.getElementById('countryFlag').src = data.countryInfo.flag;
+    var date = new Date(data.updated);
+    delete data.countryInfo;
+    delete data.country;
+    delete data.updated;
+    date = date.toLocaleDateString() + ' ' + date.toLocaleTimeString() + ' ⏱️';
 
-      var content = Object.keys(data).map(function (key, index) {
-        var value = key + ': ' + data[key];
-        var dataElement =
-          '<div class="item wow fadeInUpBig animated animated" data-number="' +
-          data[key] +
-          '" style="visibility: visible;"><i class=""></i><p id="number' +
-          (index + 1) +
-          '" class="number">' +
-          iconMap.get(key) +
-          '<br>' +
-          data[key] +
-          '</p><span></span><p>' +
-          propertyMap.get(key) +
-          '</p></div>';
-        var htmlId = '#number' + index + 1;
-        $(htmlId).jQuerySimpleCounter({ end: data[key], duration: 3000 });
-        return dataElement;
-      });
-      preTag.innerHTML = content.join('');
-
-      updateChartForCountry(country, data);
+    var content = Object.keys(data).map(function (key, index) {
+      var value = key + ': ' + data[key];
+      var dataElement =
+        '<div class="item wow fadeInUpBig animated animated" data-number="' +
+        data[key] +
+        '" style="visibility: visible;"><i class=""></i><p id="number' +
+        (index + 1) +
+        '" class="number">' +
+        iconMap.get(key) +
+        '<br>' +
+        data[key] +
+        '</p><span></span><p>' +
+        propertyMap.get(key) +
+        '</p></div>';
+      var htmlId = '#number' + index + 1;
+      $(htmlId).jQuerySimpleCounter({ end: data[key], duration: 3000 });
+      return dataElement;
     });
+    preTag.innerHTML = content.join('');
+
+    updateChartForCountry(country, data);
+  });
 };
 
 function updateChartForCountry(country, data) {
@@ -135,7 +135,7 @@ function updateChartForCountry(country, data) {
     theme: 'light2',
     align: 'center',
     title: {
-      text: 'Covid-19 in ' + country,
+      text: 'Covid-19 in ' + country
     },
     data: [
       {
@@ -146,10 +146,10 @@ function updateChartForCountry(country, data) {
           { label: 'Deaths', y: deaths },
           { label: 'Recovered', y: recovered },
           { label: 'Today Cases', y: todayCases },
-          { label: 'Today Deaths', y: todayDeaths },
-        ],
-      },
-    ],
+          { label: 'Today Deaths', y: todayDeaths }
+        ]
+      }
+    ]
   });
 
   chart.render();

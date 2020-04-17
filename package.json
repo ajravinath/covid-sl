@@ -1,0 +1,31 @@
+{
+  "name": "covid-sl",
+  "version": "2.3.0",
+  "description": "A super simple dashboard showing the current situation of CORONA VIRUS outbreak effects on Sri Lanka 🇱🇰 (and other countries)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "rm -rf ./development && rm -rf ./.cache && parcel public/index.html --out-dir development -p 3000",
+    "build": "parcel build public/index.html --out-dir dist --public-url ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajravinath/covid-sl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajravinath/covid-sl/issues"
+  },
+  "homepage": "https://github.com/ajravinath/covid-sl#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/runtime-corejs2": "^7.9.2",
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.26.3"
+  },
+  "dependencies": {
+    "novelcovid": "^1.2.4"
+  }
+}
